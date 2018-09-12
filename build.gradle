@@ -16,9 +16,8 @@ import io.swagger.models.License
 
 buildscript {
     ext {
-        vXnatDev = "1.7.5-RC1-SNAPSHOT"
         vXnat = "1.7.5-SNAPSHOT"
-        vXnatXXX = "X.X.X-eventservice-SNAPSHOT"
+        xnatDEMO = "X.X.X-DEMO-SNAPSHOT"
 
     }
     repositories {
@@ -54,7 +53,7 @@ buildscript {
 }
 
 group "org.nrg.xnat"
-version = vXnatXXX
+version = xnatDEMO
 
 apply plugin: "com.bmuschko.cargo"
 apply plugin: "com.bmuschko.tomcat"
@@ -172,7 +171,7 @@ configurations {
 }
 
 dependencyManagement.imports {
-    mavenBom "org.nrg:parent:${vXnatXXX}"
+    mavenBom "org.nrg:parent:${xnatDEMO}"
 }
 
 dependencies {
@@ -181,7 +180,7 @@ dependencies {
     implementation("org.nrg.xnat:xnat-data-models") {
         transitive = false
     }
-    implementation "org.nrg.xdat:core:${vXnatXXX}"
+    implementation "org.nrg.xdat:core:${xnatDEMO}"
     implementation "org.nrg:framework"
     implementation "org.nrg:transaction"
     implementation "org.nrg:prefs"
