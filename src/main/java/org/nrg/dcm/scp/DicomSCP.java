@@ -259,6 +259,8 @@ public class DicomSCP {
     // might not actually work correctly (e.g., XML encoding); some probably
     // can be received but will give the XNAT processing pipeline fits
     // (e.g., anything compressed).
+    private static final String[] TSUIDS              = {ExplicitVRLittleEndian};
+    /*
     private static final String[] TSUIDS              = {ExplicitVRLittleEndian,
                                                          ExplicitVRBigEndian, ImplicitVRLittleEndian, JPEGBaseline1,
                                                          JPEGExtended24, JPEGLosslessNonHierarchical14, JPEGLossless,
@@ -266,6 +268,7 @@ public class DicomSCP {
                                                          JPEG2000, JPEG2000Part2MultiComponentLosslessOnly,
                                                          JPEG2000Part2MultiComponent, JPIPReferenced, JPIPReferencedDeflate,
                                                          MPEG2, RLELossless, RFC2557MIMEEncapsulation, XMLEncoding};
+    */
     private static final String[] VERIFICATION_SOP_TS = {ImplicitVRLittleEndian, ExplicitVRLittleEndian}; // Verification service can only use LE encoding
     private static final String   DEVICE_NAME         = "XNAT_DICOM";
 
