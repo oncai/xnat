@@ -1,0 +1,59 @@
+name: Build
+
+env:
+  # The version is either the published tag name (ie. 1.2.3) when run as a part of a release build, or the SHA
+  # of the final commit of a merged pull request.
+  VERSION: ${{ github.event_name == 'release' && github.event.release.tag_name || format('1.8.9.1-{0}', github.sha) }}
+
+on:
+  push:
+    branches: [ 1.8.9.1-ocm ]
+  pull_request:
+    branches: [ 1.8.9.1-ocm ]
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+  release:
+    branches: [ 1.8.9.1-ocm ]
+    types:
+      - published
+
+jobs:
+  all:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build Devcontainer
+        run: docker build -t builder -f .devcontainer/Dockerfile .
+
+      - name: Build
+        run: |
+          echo "org.gradle.jvmargs=-Xmx4096m" > ./gradle.properties
+          docker run -t --rm --workdir=/code -v $(pwd):/code builder ./gradlew build
+
+      - name: Test
+        run: docker run -t --rm --workdir=/code -v $(pwd):/code builder ./gradlew test
+
+      - name: Package
+        run: docker run -t --rm --workdir=/code -v $(pwd):/code builder ./gradlew war
+
+      - name: Rename
+        id: rename
+        run: |
+          docker run -t --rm --workdir=/code/build/libs -v $(pwd):/code builder \
+            bash -c 'filename=$(basename -- $(ls *.war)); mv -- *.war "${filename%-*}-${{ env.VERSION }}.war"'
+          echo "FILENAME=$(basename $(ls build/libs/*.war))" >> "${GITHUB_OUTPUT}"
+
+      - name: Upload Release Asset
+        if: ${{ github.event_name == 'release' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run:
+          gh release upload ${{ github.event.release.tag_name }} build/libs/${{ steps.rename.outputs.FILENAME }}
