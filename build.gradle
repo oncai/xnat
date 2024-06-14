@@ -241,7 +241,7 @@ dependencies {
     implementation "org.json:json"
     implementation "com.thoughtworks.xstream:xstream:1.4.20"
 
-    implementation "commons-beanutils:commons-beanutils"
+    implementation "commons-beanutils:commons-beanutils:1.9.4"
     implementation "commons-codec:commons-codec"
     implementation "commons-collections:commons-collections"
     implementation "commons-configuration:commons-configuration"
