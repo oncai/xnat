@@ -61,7 +61,7 @@ configurations {
         exclude group: "commons-beanutils", module: "commons-beanutils-core"
         exclude group: "commons-betwixt"
         exclude group: "commons-dbcp"
-        exclude group: "commons-email"
+        exclude group: "org.apache.commons", module: "commons-email"
         exclude group: "commons-logging"
         exclude group: "commons-messenger"
         exclude group: "commons-pool"
