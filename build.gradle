@@ -303,7 +303,7 @@ dependencies {
     runtimeOnly "axis:axis-schema"
     runtimeOnly "cglib:cglib"
     runtimeOnly "com.zaxxer:HikariCP"
-    runtimeOnly "org.hsqldb:hsqldb"
+    runtimeOnly "org.hsqldb:hsqldb:2.7.3"
     runtimeOnly "com.sun.media:jai_imageio"
     runtimeOnly "net.bull.javamelody:javamelody-core"
     runtimeOnly "org.javassist:javassist"
