@@ -9,4 +9,8 @@ updates:
  - package-ecosystem: "devcontainers"
    directory: "/"
    schedule:
-     interval: weekly
+     interval: "weekly"
+ - package-ecosystem: "gradle"
+   directory: "/"
+   schedule:
+     interval: "daily"
