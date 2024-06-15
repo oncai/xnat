@@ -239,7 +239,7 @@ dependencies {
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8"
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
     implementation "com.jayway.jsonpath:json-path"
-    implementation "org.json:json"
+    implementation "org.json:json:20230227"
 
     implementation "commons-beanutils:commons-beanutils:1.9.4"
     implementation "commons-codec:commons-codec"
