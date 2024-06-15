@@ -193,6 +193,7 @@ dependencies {
     implementation "dcm4che:dcm4che-iod"
     implementation "dcm4che:dcm4che-net"
     implementation "net.imagej:ij"
+    implementation "net.minidev:json-smart:2.4.9"
     implementation "org.dcm4che:dcm4che-core"
     implementation "org.dcm4che:dcm4che-image"
     implementation "org.dcm4che:dcm4che-imageio"
