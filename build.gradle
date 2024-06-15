@@ -273,7 +273,7 @@ dependencies {
     implementation "gnu.getopt:java-getopt"
     implementation "org.quartz-scheduler:quartz"
     implementation "org.reflections:reflections"
-    implementation "org.apache.xmlbeans:xmlbeans:3.0.2"
+    implementation "org.apache.xmlbeans:xmlbeans:5.2.1"
     implementation "org.apache.xmlbeans:xmlbeans-xpath"
     implementation "org.apache.xbean:xbean-spring"
     implementation "net.java.dev.msv:xsdlib"
