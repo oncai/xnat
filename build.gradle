@@ -230,7 +230,7 @@ dependencies {
 
     implementation "com.fasterxml.jackson.core:jackson-annotations"
     implementation "com.fasterxml.jackson.core:jackson-core"
-    implementation "com.fasterxml.jackson.core:jackson-databind"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.13.4"
     implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml"
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-hibernate4"
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-guava"
