@@ -240,7 +240,7 @@ dependencies {
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8"
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
     implementation "com.jayway.jsonpath:json-path"
-    implementation "org.json:json:20231013"
+    implementation "org.json:json:20240303"
     implementation "com.thoughtworks.xstream:xstream:1.4.20"
 
     implementation "commons-beanutils:commons-beanutils:1.9.4"
