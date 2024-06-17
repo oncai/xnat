@@ -278,7 +278,7 @@ dependencies {
     implementation "javax.servlet:jstl"
     implementation "com.google.code.gson:gson"
     implementation "com.google.guava:guava"
-    implementation "org.postgresql:postgresql:42.2.28"
+    implementation "org.postgresql:postgresql"
     implementation "net.ttddyy:datasource-proxy"
     implementation "org.apache.activemq:activemq-broker"
     implementation "org.apache.activemq:activemq-spring"
