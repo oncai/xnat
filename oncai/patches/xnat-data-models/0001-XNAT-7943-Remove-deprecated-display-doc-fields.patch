@@ -1,0 +1,42 @@
+From 6ed86b0ac69668e82cd60439810ca6bc34ffcaaf Mon Sep 17 00:00:00 2001
+From: Timothy Olsen <timolsen@flywheel.io>
+Date: Sat, 2 Dec 2023 00:26:11 +0000
+Subject: [PATCH] XNAT-7943 Remove deprecated display doc fields
+
+Approved-by: James Ransford
+Approved-by: Kate Alpert
+---
+ .../resources/schemas/xnat/display/mrSessionData_display.xml   | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/main/resources/schemas/xnat/display/mrSessionData_display.xml b/src/main/resources/schemas/xnat/display/mrSessionData_display.xml
+index 4e517ff..3a48d63 100644
+--- a/src/main/resources/schemas/xnat/display/mrSessionData_display.xml
++++ b/src/main/resources/schemas/xnat/display/mrSessionData_display.xml
+@@ -325,7 +325,6 @@
+ 		<DisplayFieldRef id="MR_NOTES"/>
+ 		<DisplayFieldRef id="LABEL"/>
+ 		<DisplayFieldRef id="OPERATOR"/>
+-		<DisplayFieldRef id="COHORT" element_name="xnat:subjectData"/>
+ 		<DisplayFieldRef id="SCANNER"/>
+ 		<DisplayFieldRef id="MARKER"/>
+ 		<DisplayFieldRef id="STABILIZATION"/>
+@@ -336,7 +335,6 @@
+ 	<DisplayVersion versionName="detailed_csv" default-order-by="MR_NOTES" brief-description="Mr Session" dark-color="99FF99" light-color="CCFFCC">
+ 		<DisplayFieldRef id="MR_NOTES_CSV"/>
+ 		<DisplayFieldRef id="OPERATOR_CSV"/>
+-		<DisplayFieldRef id="COHORT" element_name="xnat:subjectData"/>
+ 		<DisplayFieldRef id="SCANNER_CSV"/>
+ 		<DisplayFieldRef id="MARKER_CSV"/>
+ 		<DisplayFieldRef id="STABILIZATION_CSV"/>
+@@ -362,7 +360,6 @@
+ 		<DisplayFieldRef id="LAST_MODIFIED"/>
+ 		<DisplayFieldRef id="INVEST"/>
+ 		<DisplayFieldRef id="INSERT_USER"/>
+-		<DisplayFieldRef id="PREARCHIVE"/>
+ 	</DisplayVersion>
+ 	<ViewLink alias="ORDERED_WORKFLOWS">
+ 		<Mapping TableName="ORDERED_WORKFLOWS">
+-- 
+2.34.1
+
