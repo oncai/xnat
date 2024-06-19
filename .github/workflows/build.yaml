@@ -33,10 +33,27 @@ jobs:
       - name: Build Devcontainer
         run: docker build -t builder -f .devcontainer/Dockerfile .
 
+      - name: Setup shared local Maven repo
+        run: mkdir m2
+
+      # Apply various patches to `xnat-data-models` and rebuild. The artifact is published to a
+      # local m2 repository which will be shared with the XNAT build. The XNAT build searches
+      # the local m2 repository first as a part of its build, picking up our patched .jar
+
+      - name: xnat-data-models - clone/patch/build
+        run: |
+          git clone --branch 1.8.9.1 https://bitbucket.org/xnatdev/xnat-data-models.git
+          cd xnat-data-models
+          git config user.name "admin-ci"
+          git config user.email "admin@onc.ai"
+          git am ../oncai/patches/xnat-data-models/0001-XNAT-7943-Remove-deprecated-display-doc-fields.patch
+          docker run -t --rm --workdir=/code -v $(pwd):/code -v $(pwd)/../m2:/root/.m2 builder ./gradlew clean jar publishToMavenLocal
+
       - name: Build
         run: |
           echo "org.gradle.jvmargs=-Xmx4096m" > ./gradle.properties
-          docker run -t --rm --workdir=/code -v $(pwd):/code builder ./gradlew build
+          find m2
+          docker run -t --rm --workdir=/code -v $(pwd):/code -v $(pwd)/m2:/root/.m2 builder ./gradlew build
 
       - name: Test
         run: docker run -t --rm --workdir=/code -v $(pwd):/code builder ./gradlew test
