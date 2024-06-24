@@ -55,12 +55,6 @@ jobs:
           find m2
           docker run -t --rm --workdir=/code -v $(pwd):/code -v $(pwd)/m2:/root/.m2 builder ./gradlew build
 
-      - name: Test
-        run: docker run -t --rm --workdir=/code -v $(pwd):/code builder ./gradlew test
-
-      - name: Package
-        run: docker run -t --rm --workdir=/code -v $(pwd):/code builder ./gradlew war
-
       - name: Rename
         id: rename
         run: |
